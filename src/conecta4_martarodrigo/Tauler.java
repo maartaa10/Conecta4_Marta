@@ -57,5 +57,8 @@ public class Tauler {
         }
         System.out.println("\n");
     }
-   
+    private void mostrarSeparadorInferior() {
+        String separador = "-".repeat(colus * 4 + 1);
+        System.out.println(separador);
+    }
 }
