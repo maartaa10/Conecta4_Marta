@@ -4,6 +4,8 @@
  */
 package conecta4_martarodrigo;
 
+import java.util.*;
+
 /**
  *
  * @author martarodrigo
@@ -18,7 +20,8 @@ public class Conecta4_MartaRodrigo {
         int colus = Util.llegirInt("Introdueix el num de columnes: ");
   
         Tauler tauler = new Tauler(files, colus);
-
+          Jugador[] jugadors = iniciarMinijocEleccio();
+iniciarJoc(tauler, jugadors[0], jugadors[1]);
     }
      private static int demanarColumnaValida(Tauler tauler) {
         int columna;
@@ -62,4 +65,39 @@ public class Conecta4_MartaRodrigo {
             jugadorActual = (jugadorActual == juga1) ? juga2 : juga1;
         }
     }
+       private static Jugador[] iniciarMinijocEleccio() {
+    Random random = new Random();
+    int numeroAleatori = random.nextInt(10) + 1; 
+    boolean encertat = false;
+    Jugador[] jugadors = new Jugador[2]; 
+
+    System.out.println("Comença el minijoc per decidir qui tria X o O!");
+
+    while (!encertat) {
+        int intentJuga1 = Util.llegirInt("Jugador 1, introdueix un número entre 1 i 10: ");
+        if (intentJuga1 == numeroAleatori) {
+            encertat = true;
+            System.out.println("Jugador 1 ha encertat!");
+            char eleccio = Util.demanaChar("Jugador 1, vols ser X o O?", "XO");
+            jugadors[0] = new Jugador(eleccio);
+            jugadors[1] = new Jugador(eleccio == 'X' ? 'O' : 'X');
+        } else {
+            System.out.println("Incorrecte. Jugador 2, ara és el teu torn.");
+          
+            int intentJuga2 = Util.llegirInt("Jugador 2, introdueix un número entre 1 i 10: ");
+            if (intentJuga2 == numeroAleatori) {
+                encertat = true;
+                System.out.println("Jugador 2 ha encertat!");
+                char eleccio = Util.demanaChar("Jugador 2, vols ser X o O?", "XO");
+                jugadors[1] = new Jugador(eleccio);
+                jugadors[0] = new Jugador(eleccio == 'X' ? 'O' : 'X');
+            } else {
+                System.out.println("Incorrecte. Tornem a començar.");
+            }
+        }
+    }
+
+    return jugadors; 
+}
+
 }
