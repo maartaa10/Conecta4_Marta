@@ -14,7 +14,11 @@ public class Conecta4_MartaRodrigo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        int files = Util.llegirInt("Introdueix el num de files: ");
+        int colus = Util.llegirInt("Introdueix el num de columnes: ");
+  
+        Tauler tauler = new Tauler(files, colus);
+
     }
     
 }
