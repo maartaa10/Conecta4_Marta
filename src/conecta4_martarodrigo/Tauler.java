@@ -98,4 +98,27 @@ public class Tauler {
         }
         return false;
     }
+   private boolean comprovarDiagonals(char simbol) {
+       
+        for (int i = 0; i < files - 3; i++) { 
+            for (int j = 0; j < colus - 3; j++) {
+                if (tauler[i][j] == simbol && tauler[i + 1][j + 1] == simbol &&
+                    tauler[i + 2][j + 2] == simbol && tauler[i + 3][j + 3] == simbol) {
+                    return true;
+                }
+            }
+        }
+
+        
+        for (int i = 0; i < files - 3; i++) {  
+            for (int j = 3; j < colus; j++) {
+                if (tauler[i][j] == simbol && tauler[i + 1][j - 1] == simbol &&
+                    tauler[i + 2][j - 2] == simbol && tauler[i + 3][j - 3] == simbol) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }
