@@ -9,5 +9,14 @@ package conecta4_martarodrigo;
  * @author martarodrigo
  */
 public class Jugador {
-    
+     private final char simbol;
+
+    public Jugador(char simbol) {
+        this.simbol = simbol;
+    }
+
+    public char getSimbol() {
+        return simbol;
+    }
+
 }
