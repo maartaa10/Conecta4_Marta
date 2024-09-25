@@ -27,4 +27,30 @@ public class Tauler {
             }
         }
     }
+    public void mostrarTauler() {
+        mostrarPartDalt();
+        mostrarFilas();
+      //  mostrarSeparadorInferior();
+      //  mostrarNumerosColumna();
+    }
+
+    private void mostrarPartDalt() {
+        System.out.println();
+        for (int i = 0; i < colus; i++) {
+            System.out.print("  " + (i + 1) + " ");
+        }
+        System.out.println();
+    }
+     private void mostrarFilas() {
+        String separador = "-".repeat(colus * 4 + 1);
+        for (int i = 0; i < files; i++) {
+            System.out.println(separador);
+            for (int j = 0; j < colus; j++) {
+                System.out.print("| " + tauler[i][j] + " ");
+            }
+            System.out.println("|");
+        }
+    }
+
+   
 }
