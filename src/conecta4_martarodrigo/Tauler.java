@@ -30,8 +30,8 @@ public class Tauler {
     public void mostrarTauler() {
         mostrarPartDalt();
         mostrarFilas();
-      //  mostrarSeparadorInferior();
-      //  mostrarNumerosColumna();
+      // mostrarSeparadorInferior();
+       mostrarNumerosColumna();
     }
 
     private void mostrarPartDalt() {
@@ -51,6 +51,11 @@ public class Tauler {
             System.out.println("|");
         }
     }
-
+  private void mostrarNumerosColumna() {
+        for (int i = 0; i < colus; i++) {
+            System.out.print("  " + (i + 1) + " ");
+        }
+        System.out.println("\n");
+    }
    
 }
