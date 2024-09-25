@@ -76,4 +76,16 @@ public class Tauler {
             }
         }
     }
+      private boolean comprovarHoritzontal(char simbol) {
+        for (int i = 0; i < files; i++) {
+            for (int j = 0; j < colus - 3; j++) {  
+                if (tauler[i][j] == simbol && tauler[i][j + 1] == simbol &&
+                    tauler[i][j + 2] == simbol && tauler[i][j + 3] == simbol) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
