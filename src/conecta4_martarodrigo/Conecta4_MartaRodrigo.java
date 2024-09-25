@@ -33,4 +33,33 @@ public class Conecta4_MartaRodrigo {
 
         return columna;
     }
+      private static void iniciarJoc(Tauler tauler, Jugador juga1, Jugador juga2) {
+        boolean jocAcabat = false;
+        boolean empat = false;
+        Jugador jugadorActual = juga1;
+
+        while (!jocAcabat && !empat) {
+            tauler.mostrarTauler();
+            System.out.println("Torn del jugador " + jugadorActual.getSimbol() + ". Tria una columna:");
+
+          
+            int columna = demanarColumnaValida(tauler);
+
+          
+            tauler.posarFitxa(jugadorActual.getSimbol(), columna);
+
+           
+            if (tauler.comprovarGuanyador(jugadorActual.getSimbol())) {
+                tauler.mostrarTauler();
+                System.out.println("¡Jugador " + jugadorActual.getSimbol() + " ha guanyat!");
+                jocAcabat = true;
+            } else if (tauler.estaPle()) {
+                tauler.mostrarTauler();
+                System.out.println("¡Empate!");
+                empat = true;
+            }
+
+            jugadorActual = (jugadorActual == juga1) ? juga2 : juga1;
+        }
+    }
 }
