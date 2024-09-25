@@ -30,7 +30,7 @@ public class Tauler {
     public void mostrarTauler() {
         mostrarPartDalt();
         mostrarFilas();
-      // mostrarSeparadorInferior();
+      mostrarSeparadorInferior();
        mostrarNumerosColumna();
     }
 
@@ -60,5 +60,20 @@ public class Tauler {
     private void mostrarSeparadorInferior() {
         String separador = "-".repeat(colus * 4 + 1);
         System.out.println(separador);
+    }
+     public boolean columnaDisponible(int columna) {
+        if (columna < 0 || columna >= colus) {
+            return false;
+        }
+        return tauler[0][columna] == ' ';
+    }
+
+    public void posarFitxa(char simbol, int columna) {
+        for (int i = files - 1; i >= 0; i--) {
+            if (tauler[i][columna] == ' ') {
+                tauler[i][columna] = simbol;
+                break;
+            }
+        }
     }
 }
