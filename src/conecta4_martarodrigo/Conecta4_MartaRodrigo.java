@@ -20,5 +20,17 @@ public class Conecta4_MartaRodrigo {
         Tauler tauler = new Tauler(files, colus);
 
     }
-    
+     private static int demanarColumnaValida(Tauler tauler) {
+        int columna;
+        boolean movimentValid = false;
+        do {
+            columna = Util.llegirInt("Tria una columna:") - 1;  
+            movimentValid = tauler.columnaDisponible(columna);
+            if (!movimentValid) {
+                System.out.println("Columna plena o invalida. Torna a tirar i tria una altra columna:");
+            }
+        } while (!movimentValid);
+
+        return columna;
+    }
 }
