@@ -121,4 +121,16 @@ public class Tauler {
 
         return false;
     }
+     public boolean comprovarGuanyador(char simbol) {
+        return comprovarHoritzontal(simbol) || comprovarVertical(simbol) || comprovarDiagonals(simbol);
+    }
+
+    public boolean estaPle() {
+        for (int j = 0; j < colus; j++) {
+            if (tauler[0][j] == ' ') {
+                return false;
+            }
+        }
+        return true;
+    }
 }
