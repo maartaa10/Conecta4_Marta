@@ -87,5 +87,15 @@ public class Tauler {
         }
         return false;
     }
-
+  private boolean comprovarVertical(char simbol) {
+        for (int j = 0; j < colus; j++) {
+            for (int i = 0; i < files - 3; i++) {  
+                if (tauler[i][j] == simbol && tauler[i + 1][j] == simbol &&
+                    tauler[i + 2][j] == simbol && tauler[i + 3][j] == simbol) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
