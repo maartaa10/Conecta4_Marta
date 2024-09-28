@@ -5,7 +5,7 @@
 package conecta4_martarodrigo;
 
 /**
- *
+ * Creem la classe Jugador
  * @author martarodrigo
  */
 public class Jugador {

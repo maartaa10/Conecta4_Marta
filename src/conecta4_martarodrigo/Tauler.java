@@ -41,16 +41,23 @@ public class Tauler {
         }
         System.out.println();
     }
-     private void mostrarFilas() {
-        String separador = "-".repeat(colus * 4 + 1);
-        for (int i = 0; i < files; i++) {
-            System.out.println(separador);
-            for (int j = 0; j < colus; j++) {
-                System.out.print("| " + tauler[i][j] + " ");
-            }
-            System.out.println("|");
-        }
+   private void mostrarFilas() {
+ 
+    String separador = "";
+    for (int i = 0; i < colus * 4 + 1; i++) {
+        separador += "-";  
     }
+
+   
+    for (int i = 0; i < files; i++) {
+        System.out.println(separador);
+        for (int j = 0; j < colus; j++) {
+            System.out.print("| " + tauler[i][j] + " ");
+        }
+        System.out.println("|");
+    }
+}
+
   private void mostrarNumerosColumna() {
         for (int i = 0; i < colus; i++) {
             System.out.print("  " + (i + 1) + " ");
@@ -58,9 +65,14 @@ public class Tauler {
         System.out.println("\n");
     }
     private void mostrarSeparadorInferior() {
-        String separador = "-".repeat(colus * 4 + 1);
-        System.out.println(separador);
+   
+    String separador = "";
+    for (int i = 0; i < colus * 4 + 1; i++) {
+        separador += "-";  
     }
+    System.out.println(separador);
+}
+
      public boolean columnaDisponible(int columna) {
         if (columna < 0 || columna >= colus) {
             return false;
