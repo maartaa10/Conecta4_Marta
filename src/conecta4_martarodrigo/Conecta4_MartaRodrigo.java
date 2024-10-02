@@ -17,9 +17,10 @@ public class Conecta4_MartaRodrigo {
      */
     public static void main(String[] args) {
         char resposta;  
-
+  Scanner teclat = new Scanner(System.in);
         do {
-           
+            System.out.println("BENVINGUTS AL CONNECTA 4. COMENÇEM!");
+              
             int files = Util.llegirInt("Introdueix el num de files: ");
             int colus = Util.llegirInt("Introdueix el num de columnes: ");
 
@@ -36,7 +37,7 @@ public class Conecta4_MartaRodrigo {
 
     
    /**
- * Demana a l'usuari que triï una columna vàlida per fer un moviment al tauler.
+ * Es demana a l'usuari que triï una columna vàlida per fer un moviment al tauler.
  * Comprova si la columna escollida està disponible i repeteix la pregunta
  * fins que l'usuari proporcioni una columna vàlida.
  *
@@ -65,7 +66,7 @@ private static int demanarColumnaValida(Tauler tauler) {
 
     
    /**
- * Inicia el joc entre dos jugadors, gestionant els torns i comprovant
+ * Iniciem el joc entre dos jugadors, gestionant els torns i comprovant
  * si hi ha un guanyador o si el joc acaba en empat.
  *
  * @param tauler L'objecte Tauler que representa el tauler de joc.
@@ -103,7 +104,7 @@ private static void iniciarJoc(Tauler tauler, Jugador juga1, Jugador juga2) {
 
  
    /**
- * Inicia un minijoc per determinar quin jugador escollirà el símbol 'X' o 'O'.
+ * Iniciem un minijoc per determinar quin jugador escollirà el símbol 'X' o 'O'.
  * Els jugadors han d'endevinar un número aleatori entre 1 i 10.
  * El primer jugador que encerti el número aleatori guanya i escull el seu símbol.
  *
@@ -122,7 +123,7 @@ private static Jugador[] iniciarMinijocEleccio() {
         // Jugador 1 fa el seu intent
         int intentJuga1 = Util.llegirInt("Jugador 1, introdueix un número entre 1 i 10: ");
         if (intentJuga1 == numeroAleatori) { // Comprovem si ha encertat
-            encertat = true; // Marcamos que hem encertat
+            encertat = true; // Marquem que hem encertat
             System.out.println("Jugador 1 ha encertat!"); // Informem que el jugador 1 ha encertat
             char eleccio = Util.demanaChar("Jugador 1, vols ser X o O?", "XO"); // Preguntem quin símbol vol
             jugadors[0] = new Jugador(eleccio); // Creem l'objecte Jugador 1 amb el símbol escollit
@@ -132,7 +133,7 @@ private static Jugador[] iniciarMinijocEleccio() {
             // Jugador 2 fa el seu intent
             int intentJuga2 = Util.llegirInt("Jugador 2, introdueix un número entre 1 i 10: ");
             if (intentJuga2 == numeroAleatori) { // Comprovem si el jugador 2 ha encertat
-                encertat = true; // Marcamos que hem encertat
+                encertat = true; // Marquem que hem encertat
                 System.out.println("Jugador 2 ha encertat!"); // Informem que el jugador 2 ha encertat
                 char eleccio = Util.demanaChar("Jugador 2, vols ser X o O?", "XO"); // Preguntem quin símbol vol
                 jugadors[1] = new Jugador(eleccio); // Creem l'objecte Jugador 2 amb el símbol escollit

@@ -62,7 +62,7 @@ public class Tauler {
     }
 
     /**
-     * Mostra les files del tauler de joc amb les separacions horitzontals entre
+     * Mostrem les files del tauler de joc amb les separacions horitzontals entre
      * elles.
      *
      *
@@ -98,7 +98,7 @@ public class Tauler {
     }
 
     /**
-     * Mostra els números de cada columna a la part inferior del tauler. Els
+     * Mostrem els números de cada columna a la part inferior del tauler. Els
      * números indiquen quina columna poden triar els jugadors per deixar-hi la
      * seva fitxa.
      */
@@ -113,7 +113,7 @@ public class Tauler {
     }
 
     /**
-     * Mostra una línia de separació horitzontal a la part inferior del tauler.
+     * Mostrem una línia de separació horitzontal a la part inferior del tauler.
      *
      */
     private void mostrarSeparadorInferior() {
@@ -133,7 +133,7 @@ public class Tauler {
     }
 
     /**
-     * Comprova si una columna està disponible per col·locar una fitxa. Una
+     * Comprovem si una columna està disponible per col·locar una fitxa. Una
      * columna està disponible si no està fora dels límits del tauler o si la
      * seva fila superior està buida (indicant que hi ha espai).
      *
@@ -252,7 +252,7 @@ public class Tauler {
 }
 
 public boolean comprovarGuanyador(char simbol) {
-    // Comprova si el jugador ha guanyat horitzontalment, verticalment o diagonalment
+    // Comprovem si el jugador ha guanyat horitzontalment, verticalment o diagonalment
     return comprovarHoritzontal(simbol) || comprovarVertical(simbol) || comprovarDiagonals(simbol);
 }
 
