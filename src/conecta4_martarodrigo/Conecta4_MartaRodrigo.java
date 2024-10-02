@@ -42,7 +42,7 @@ public class Conecta4_MartaRodrigo {
  * fins que l'usuari proporcioni una columna vàlida.
  *
  * @param tauler L'objecte Tauler que representa el tauler de joc.
- * @return Retorna un enter que representa la columna seleccionada (indexada a 0).
+ * @return Retorna un int que representa la columna seleccionada (indexada a 0).
  */
 private static int demanarColumnaValida(Tauler tauler) {
     int columna; // Declarem la variable 'columna' per guardar la selecció de l'usuari
@@ -112,7 +112,7 @@ private static void iniciarJoc(Tauler tauler, Jugador juga1, Jugador juga2) {
  *         i escollit el símbol, i el segon jugador té el símbol restant (si el guanyador escull X, el restant es O).
  */
 private static Jugador[] iniciarMinijocEleccio() {
-    Random random = new Random(); // Creem un objecte Random per generar números aleatoris
+    Random random = new Random(); //Utilitzem Random per generar números aleatoris
     int numeroAleatori = random.nextInt(10) + 1;  // Generem un número aleatori entre 1 i 10
     boolean encertat = false; // Inicialitzem 'encertat' a false
     Jugador[] jugadors = new Jugador[2];  // Declarem un array per guardar els dos jugadors
