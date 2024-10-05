@@ -9,7 +9,7 @@ import java.util.*;
  * @author martarodrigo
  */
 public class Bot extends Jugador{
-     private Random random;
+     private final Random random;
 
     public Bot(char simbol, String nom) {
         super(simbol, nom);
@@ -17,16 +17,16 @@ public class Bot extends Jugador{
     }
 
     /**
-     * El bot selecciona una columna de manera aleatoria, asegurándose de que sea válida.
+     * El bot selecciona una columna de manera aleatoria.
      *
-     * @param tauler El objeto Tauler que representa el tablero de juego.
-     * @return Retorna la columna seleccionada por el bot.
+     * @param tauler El objecte Tauler que representa el tauler de joc.
+     * @return Retorna la columna seleccionada pel bot.
      */
     public int seleccionarColumna(Tauler tauler) {
         int columna;
         do {
             columna = random.nextInt(tauler.getColus());  // Selecciona una columna aleatoria
-        } while (!tauler.columnaDisponible(columna));  // Repite hasta que la columna sea válida
+        } while (!tauler.columnaDisponible(columna));  // HO repeteix fins que la columna sigui valida
         return columna;
     }
 }

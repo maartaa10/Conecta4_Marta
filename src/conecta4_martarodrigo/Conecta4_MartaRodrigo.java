@@ -78,7 +78,7 @@ private static void iniciarJoc(Tauler tauler, Jugador guanya, Jugador perd) {
         tauler.mostrarTauler(); // Mostrem l'estat actual del tauler de joc
         System.out.println("Torn de " + jugadorActual.getNom() + " (" + jugadorActual.getSimbol() + ")."); // Informem de qui és el torn
 
-        int columna; // Variable per emmagatzemar la columna seleccionada
+        int columna; // Variable per guardar la columna seleccionada
 
         if (jugadorActual instanceof Bot) { // Comprovem si el jugador actual és un Bot
             // Si és el torn del bot, escull una columna automàticament
@@ -97,8 +97,8 @@ private static void iniciarJoc(Tauler tauler, Jugador guanya, Jugador perd) {
             jocAcabat = true; // Marquem que el joc ha acabat
         } else if (tauler.estaPle()) { // Comprovem si el tauler està ple
             tauler.mostrarTauler(); // Mostrem l'estat final del tauler
-            System.out.println("¡Empat!"); // Informem que hi ha hagut un empat
-            empat = true; // Marquem que el joc ha acabat en empat
+            System.out.println("¡Empat!"); // Informem que hi ha hagut un empate
+            empat = true; // Marquem que el joc ha acabat en empate
         }
 
         // Canviem al següent jugador
@@ -114,7 +114,7 @@ private static void iniciarJoc(Tauler tauler, Jugador guanya, Jugador perd) {
  * símbol i tira primer.
  *
  * En cas de jugar contra un bot, el primer jugador escollirà el seu
- * símbol i el bot rebrà el símbol restant. Si els jugadors decideixen jugar
+ * símbol i el bot tindra el símbol restant. Si els jugadors decideixen jugar
  * entre ells, el minijoc consistirà en adivinar un número entre 1 i 10. 
  * El guanyador escollirà el seu símbol, mentre que el segon jugador tindra 
  * el símbol restant.
@@ -152,7 +152,7 @@ private static Jugador[] iniciarMinijocEleccio() {
         System.out.println("Minijoc: Intenteu endevinar un número entre 1 i 10. Qui encerti primer, tria la seva fitxa."); 
         int numeroAleatori = random.nextInt(10) + 1;  // Elegim un número aleatori entre 1 i 10
         boolean encertat = false; // Inicialitzem 'encertat' a false
-        Jugador guanya = null; // Variable per emmagatzemar el guanyador
+        Jugador guanya = null; // Variable per guardar el guanyador
 
         while (!encertat) { // Continuem fins que un jugador encerti el número
             // Jugador 1 intenta endevinar
