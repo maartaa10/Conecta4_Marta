@@ -9,14 +9,19 @@ package conecta4_martarodrigo;
 
  */
 public class Jugador {
-     private final char simbol;
+    private final char simbol;
+    private final String nom;
 
-    public Jugador(char simbol) {
+    public Jugador(char simbol, String nom) {
         this.simbol = simbol;
+        this.nom = nom;
     }
 
     public char getSimbol() {
         return simbol;
     }
 
+    public String getNom() {
+        return nom;
+    }
 }

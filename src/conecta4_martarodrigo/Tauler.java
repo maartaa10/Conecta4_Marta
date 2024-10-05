@@ -43,103 +43,73 @@ public class Tauler {
         mostrarNumerosColumna();
     }
 
-    /**
-     * Mostrem la part superior del tauler, amb els números de les columnes.
-     */
-    private void mostrarPartDalt() {
-
-        // Imprimeix una línia en blanc per a separar visualment la part superior del tauler
-        System.out.println();
-
-        // Aquest bucle recorre totes les columnes i imprimeix el número de cada columna
-        for (int i = 0; i < colus; i++) {
-            // El número de columna que es mostra és i + 1, ja que les columnes comencen en 1 (no en 0)
-            System.out.print("  " + (i + 1) + " ");
-        }
-
-        // Després de mostrar tots els números de les columnes, es fa un salt de línia
-        System.out.println();
+   /**
+ * Mostrem la part superior del tauler, amb els números de les columnes.
+ */
+private void mostrarPartDalt() {
+    System.out.println(); // Imprimeix una línia buida per separar la part superior del tauler de les dades anteriors.
+    
+    // Recorre cada columna del tauler, des de 0 fins a (colus - 1).
+    for (int i = 0; i < colus; i++) {
+        // Modificat per centrar els números
+        // Imprimeix el número de la columna (i + 1) amb un espai per centrar-lo.
+        // El %2d ens diu que el número ocuparà 2 espais, ajudant a l'alineació.
+        System.out.printf("%2d  ", (i + 1)); // Alineació centrada
     }
+    
+    System.out.println(); // Imprimeix una línia nova per separar la part superior del tauler del contingut de les files.
+}
 
     /**
-     * Mostrem les files del tauler de joc amb les separacions horitzontals entre
-     * elles.
-     *
-     *
+     * Mostra les files del tauler amb les fitxes col·locades. Cada fila es
+     * separa amb línies horitzontals.
      */
     private void mostrarFilas() {
-
-        // Inicialitzem la variable 'separador', que s'utilitzarà per a dibuixar les línies de separació entre files.
         String separador = "";
 
-        // Amb aquest bucle es fa el separador horitzontal utilitzant tants guions ("-") com cal per a cobrir la mida del tauler.
-        // Cada columna necessita 4 caràcters: 3 per als espais reservats per cada fitxa ("| _ ") i un de més per la línia final.
-        // El +1 és per incloure el guió addicional que tanca la fila.
+        // Construïm el separador
         for (int i = 0; i < colus * 4 + 1; i++) {
-            separador += "-";  // Afegeix un guió a cada iteració del bucle
+            separador += "-";
         }
 
-        // Aquest segon bucle for recorre cada fila del tauler.
         for (int i = 0; i < files; i++) {
-
-            // Primer, imprimeix el separador que delimita una fila de l'altra.
             System.out.println(separador);
-
-            // Ara, dins de la fila, recorre totes les columnes.
             for (int j = 0; j < colus; j++) {
-                // Mostrem el contingut de la cel·la actual del tauler, que pot ser un espai en blanc (' ') o una fitxa ('X' o 'O').
-                // La sortida és " | " seguida del contingut de la cel·la (tauler[i][j]) i després un espai.
-                System.out.print("| " + tauler[i][j] + " ");
+                // utilitzem printf per "formatear" la sortida
+                System.out.printf("| %c ", tauler[i][j]);
             }
-
-            // Un cop s'ha imprès tota la fila (totes les columnes d'aquesta fila), imprimim la barra final de la fila.
             System.out.println("|");
         }
     }
 
     /**
-     * Mostrem els números de cada columna a la part inferior del tauler. Els
-     * números indiquen quina columna poden triar els jugadors per deixar-hi la
-     * seva fitxa.
+     * Mostra els números de les columnes a la part inferior del tauler.
      */
     private void mostrarNumerosColumna() {
-        // Aquest bucle recorre el nombre de columnes del tauler (colus) i imprimeix els números corresponents a cadascuna.
-        // Comença a 1 per a que l'usuari pugui veure els números a partir de l'1 (no comença des de 0).
         for (int i = 0; i < colus; i++) {
-            System.out.print("  " + (i + 1) + " ");  // Mostra el número de columna, amb dos espais abans i un després per formatejar
+            // utilitzem printf per centrar els números
+            System.out.printf("%2d  ", (i + 1)); // Espais per centrar el número
         }
-        // Un cop ha acabat de mostrar tots els números de les columnes, imprimeix una nova línia per a separar del que vingui després.
         System.out.println("\n");
     }
 
     /**
-     * Mostrem una línia de separació horitzontal a la part inferior del tauler.
-     *
+     * Mostra la línia horitzontal inferior del tauler. Aquesta línia separa el
+     * tauler de les accions del jugador.
      */
     private void mostrarSeparadorInferior() {
-
-        // Inicialitzem una cadena buida per a construir el separador de guions.
         String separador = "";
-
-        // Aquest bucle construeix el separador horitzontal. El nombre total de guions és proporcional al nombre de columnes.
-        // Cada columna ocupa 4 caràcters (per representar l'espai de cada fitxa i les delimitacions).
-        // El +1 és per tancar correctament la fila amb un guió addicional.
         for (int i = 0; i < colus * 4 + 1; i++) {
-            separador += "-";  // Afegeix un guió a cada iteració del bucle.
+            separador += "-";
         }
-
-        // Un cop el separador s'ha construït completament, mostrem per pantalla.
         System.out.println(separador);
     }
 
     /**
-     * Comprovem si una columna està disponible per col·locar una fitxa. Una
-     * columna està disponible si no està fora dels límits del tauler o si la
-     * seva fila superior està buida (indicant que hi ha espai).
+     * Comprova si una columna esta disponible per col·locar una fitxa.
      *
-     * @param columna La columna que es vol comprovar (comença en 0).
-     * @return true si la columna és vàlida i té espai per col·locar una fitxa;
-     * false en cas contrari (si està fora de límits o plena).
+     * @param columna Índex de la columna a comprovar.
+     * @return True si la columna està disponible, false en cas contrari.
      */
     public boolean columnaDisponible(int columna) {
         if (columna < 0 || columna >= colus) {
@@ -149,129 +119,135 @@ public class Tauler {
     }
 
     /**
-     * Col·loca una fitxa del jugador en la columna indicada. La fitxa es
-     * col·locarà a la posició més baixa disponible d'aquesta columna (com si
-     * caigués).
-     *
-     * @param simbol El símbol del jugador que es vol col·locar (per exemple,
-     * 'X' o 'O').
-     * @param columna La columna on es vol col·locar la fitxa (comença en 0).
-     */
-    public void posarFitxa(char simbol, int columna) {
-        boolean fitxaPosada = false; // Controla si ja hem posat la fitxa
-        for (int i = files - 1; i >= 0 && !fitxaPosada; i--) {
-            if (tauler[i][columna] == ' ') {
-                tauler[i][columna] = simbol; // Col·loca la fitxa del jugador
-                fitxaPosada = true; // Marca que ja hem posat la fitxa
-            }
+ * Col·loca una fitxa al tauler en una columna específica.
+ *
+ * @param simbol Simbol que representa la fitxa (ex. 'X' o 'O').
+ * @param columna Índex de la columna on col·locar la fitxa.
+ */
+public void posarFitxa(char simbol, int columna) {
+    boolean fitxaPosada = false; // Boolean que indica si la fitxa ha estat col·locada o no.
+    
+    // Recorre les files del tauler començant per la fila inferior (files - 1) fins a la superior (0).
+    for (int i = files - 1; i >= 0 && !fitxaPosada; i--) {
+        // Comprova si la casella actual està buida (conté un espai).
+        if (tauler[i][columna] == ' ') {
+            // Si la casella està buida, col·loca la fitxa (simbol) a la posició corresponent.
+            tauler[i][columna] = simbol; 
+            fitxaPosada = true; // Marca que la fitxa s'ha col·locat.
         }
     }
+}
 
-    /**
-     * Comprovem si hi ha quatre fitxes consecutives del mateix jugador en una
-     * línia horitzontal al tauler.
-     *
-     * @param simbol El símbol del jugador que es vol comprovar (per exemple,
-     * 'X' o 'O').
-     * @return true si es troben quatre fitxes consecutives horitzontals del
-     * mateix jugador; false en cas contrari.
-     */
-    private boolean comprovarHoritzontal(char simbol) {
-        for (int i = 0; i < files; i++) { // Recórrer cada fila
-            for (int j = 0; j < colus - 3; j++) { // Recórrer cada columna amb marge suficient per 4 fitxes (i evitar index out of bounds)
-                // Comprovar si hi ha 4 fitxes consecutives del mateix jugador
-                if (tauler[i][j] == simbol && tauler[i][j + 1] == simbol
-                        && tauler[i][j + 2] == simbol && tauler[i][j + 3] == simbol) {
-                    return true; // S'ha trobat una línia horitzontal guanyadora
-                }
-            }
-        }
-        return false; // No s'ha trobat cap línia horitzontal guanyadora
-    }
 
-    /**
-     * Comprovem si hi ha quatre fitxes consecutives del mateix jugador en una
-     * columna del tauler.
-     *
-     *
-     * @param simbol El símbol del jugador que es vol comprovar (per exemple,
-     * 'X' o 'O').
-     * @return true si es troben quatre fitxes consecutives verticals del mateix
-     * jugador; false en cas contrari.
-     */
-    private boolean comprovarVertical(char simbol) {
-        for (int j = 0; j < colus; j++) { // Recórrer cada columna
-            for (int i = 0; i < files - 3; i++) { // Recórrer cada fila amb marge suficient per 4 fitxes (i evitar index out of bounds)
-                // Comprovar si hi ha 4 fitxes consecutives del mateix jugador
-                if (tauler[i][j] == simbol && tauler[i + 1][j] == simbol
-                        && tauler[i + 2][j] == simbol && tauler[i + 3][j] == simbol) {
-                    return true; // S'ha trobat una línia vertical guanyadora
-                }
-            }
-        }
-        return false; // No s'ha trobat cap línia vertical guanyadora
-    }
-
-    /**
-     * Comprovem si hi ha quatre fitxes consecutives del mateix jugador en una
-     * línia diagonal al tauler.
-     *
-     * @param simbol El símbol del jugador que es vol comprovar (per exemple,
-     * 'X' o 'O').
-     * @return true si es troben quatre fitxes consecutives diagonals del mateix
-     * jugador; false en cas contrari.
-     */
-    private boolean comprovarDiagonals(char simbol) {
-    // Recórrer cada fila amb marge suficient per 4 fitxes (i evitar index out of bounds)
-    for (int i = 0; i < files - 3; i++) {
-        // Recórrer cada columna amb marge suficient per 4 fitxes (i evitar index out of bounds)
+   /**
+ * Comprova si hi ha una combinació guanyadora horitzontal.
+ *
+ * @param simbol Simbol de la fitxa a comprovar.
+ * @return TRue si s'ha trobat una combinació guanyadora, false en cas
+ * contrari.
+ */
+private boolean comprovarHoritzontal(char simbol) {
+    // Recorre totes les files del tauler, on 'files' és el nombre total de files
+    for (int i = 0; i < files; i++) {
+        // Recorre les columnes del tauler, aturant-se 3 posicions abans del final
         for (int j = 0; j < colus - 3; j++) {
-            // Comprovem si els quatre símbols en la diagonal principal són iguals
+            // Comprova si hi ha 4 fitxes consecutives horitzontalment
+            if (tauler[i][j] == simbol && tauler[i][j + 1] == simbol
+                    && tauler[i][j + 2] == simbol && tauler[i][j + 3] == simbol) {
+                return true; //es troba una combinació guanyadora
+            }
+        }
+    }
+    return false; // no es troba cap combinació
+}
+
+
+    /**
+ * Comprova si hi ha una combinació guanyadora vertical.
+ *
+ * @param simbol Simbol de la fitxa a comprovar.
+ * @return True si s'ha trobat una combinació guanyadora, False en cas
+ * contrari.
+ */
+private boolean comprovarVertical(char simbol) {
+    // Recorre totes les columnes del tauler
+    for (int j = 0; j < colus; j++) {
+        // Recorre les files del tauler, aturant-se 3 posicions abans del final
+        for (int i = 0; i < files - 3; i++) {
+            // Comprova si hi ha 4 fitxes consecutives verticalment
+            if (tauler[i][j] == simbol && tauler[i + 1][j] == simbol
+                    && tauler[i + 2][j] == simbol && tauler[i + 3][j] == simbol) {
+                return true; // Si es troba una combinació guanyadora, retorna cert
+            }
+        }
+    }
+    return false; // Si no es troba cap combinació, retorna fals
+}
+
+    /**
+ * Comprova si hi ha una combinació guanyadora en diagonals.
+ *
+ * @param simbol Simbol de la fitxa a comprovar.
+ * @return Cert si s'ha trobat una combinació guanyadora, fals en cas
+ * contrari.
+ */
+private boolean comprovarDiagonals(char simbol) {
+    // Recorre les files del tauler, aturant-se 3 posicions abans del final
+    for (int i = 0; i < files - 3; i++) {
+        // Recorre les columnes del tauler, aturant-se 3 posicions abans del final
+        for (int j = 0; j < colus - 3; j++) {
+            // Comprova si hi ha 4 fitxes consecutives en diagonal (de dalt a baix, esquerra a dreta)
             if (tauler[i][j] == simbol && tauler[i + 1][j + 1] == simbol
                     && tauler[i + 2][j + 2] == simbol && tauler[i + 3][j + 3] == simbol) {
-                // Retorna true si troba la seqüència (S'ha trobat una línia diagonal guanyadora)
-                return true;
+                return true; // Si es troba una combinació guanyadora, retorna cert
             }
         }
     }
 
- // Recórrer cada fila amb marge suficient per 4 fitxes (i evitar index out of bounds)
+    // Recorre les files del tauler, aturant-se 3 posicions abans del final
     for (int i = 0; i < files - 3; i++) {
-         //Fem el bucle sobre les columnes del tauler, començant des de la quarta columna
+        // Recorre les columnes del tauler, començant des de la columna 3
         for (int j = 3; j < colus; j++) {
-            // Comprovem si els quatre símbols en la segona diagonal són iguals
+            // Comprova si hi ha 4 fitxes consecutives en diagonal (de dalt a baix, dreta a esquerra)
             if (tauler[i][j] == simbol && tauler[i + 1][j - 1] == simbol
                     && tauler[i + 2][j - 2] == simbol && tauler[i + 3][j - 3] == simbol) {
-                // Retorna true si troba la seqüència (S'ha trobat una línia diagonal guanyadora)
-                return true;
+                return true; // Si es troba una combinació guanyadora, retorna cert
             }
         }
     }
-// No s'ha trobat cap línia diagonal guanyadora
-    return false;
+    return false; // Si no es troba cap combinació, retorna fals
 }
-
-public boolean comprovarGuanyador(char simbol) {
-    // Comprovem si el jugador ha guanyat horitzontalment, verticalment o diagonalment
-    return comprovarHoritzontal(simbol) || comprovarVertical(simbol) || comprovarDiagonals(simbol);
-}
-
 
     /**
- * Comprova si el tauler està ple, és a dir, si no queden espais buits.
- *
- * @return Retorna true si el tauler està ple, false si hi ha espais buits.
- */
-public boolean estaPle() {
-    // Itera sobre totes les columnes del tauler
-    for (int j = 0; j < colus; j++) {
-        // Comprova si la primera fila de la columna està buida
-        if (tauler[0][j] == ' ') {
-            // Retorna false si troba un espai buit
-            return false;
-        }
+     * Comprova si hi ha un guanyador al tauler.
+     *
+     * @param simbol Simbol de la fitxa a comprovar.
+     * @return Cert si s'ha trobat un guanyador, fals en cas contrari.
+     */
+    public boolean comprovarGuanyador(char simbol) {
+        return comprovarHoritzontal(simbol) || comprovarVertical(simbol) || comprovarDiagonals(simbol);
     }
-    // Retorna true si no hi ha espais buits
-    return true;
-}
+
+    /**
+     * Comprova si el tauler està ple.
+     *
+     * @return Cert si el tauler està ple, fals en cas contrari.
+     */
+    public boolean estaPle() {
+        for (int j = 0; j < colus; j++) {
+            if (tauler[0][j] == ' ') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Obté el nombre de columnes del tauler.
+     *
+     * @return Nombre de columnes.
+     */
+    public int getColus() {
+        return this.colus;
+    }
 }
