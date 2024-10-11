@@ -47,17 +47,17 @@ public class Tauler {
  * Mostrem la part superior del tauler, amb els números de les columnes.
  */
 private void mostrarPartDalt() {
-    System.out.println(); // Imprimeix una línia buida per separar la part superior del tauler de les dades anteriors.
+    System.out.println(); // Imprimim una línia buida per separar la part superior del tauler de les dades anteriors.
     
     // Recorre cada columna del tauler, des de 0 fins a (colus - 1).
     for (int i = 0; i < colus; i++) {
         // Modificat per centrar els números
         // Imprimeix el número de la columna (i + 1) amb un espai per centrar-lo.
-        // El %2d ens diu que el número ocuparà 2 espais, ajudant a l'alineació.
+        // El %2d ens diu que el número ocuparà 2 espais, ajudant a alinear el tauler.
         System.out.printf("%2d  ", (i + 1)); // Alineació centrada
     }
     
-    System.out.println(); // Imprimeix una línia nova per separar la part superior del tauler del contingut de les files.
+    System.out.println(); // Imprimim una línia nova per separar la part superior del tauler del contingut de les files.
 }
 
     /**

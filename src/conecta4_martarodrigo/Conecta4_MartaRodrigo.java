@@ -124,7 +124,7 @@ private static void iniciarJoc(Tauler tauler, Jugador guanya, Jugador perd) {
  * (si el guanyador escull 'X', el restant és 'O').
  */
 private static Jugador[] iniciarMinijocEleccio() {
-    Random random = new Random(); // Utilitzem Random per generar números aleatoris
+    Random rnd = new Random(); // Utilitzem Random per generar números aleatoris
     Jugador[] jugadors = new Jugador[2]; // Cream un array per guardar els dos jugadors
 
     String nomJugador1 = Util.llegirString("Jugador 1, introdueix el teu nom: "); // Llegim el nom del jugador 1
@@ -150,7 +150,7 @@ private static Jugador[] iniciarMinijocEleccio() {
         String nomJugador2 = Util.llegirString("Jugador 2, introdueix el teu nom: "); // Llegim el nom del jugador 2
 
         System.out.println("Minijoc: Intenteu endevinar un número entre 1 i 10. Qui encerti primer, tria la seva fitxa."); 
-        int numeroAleatori = random.nextInt(10) + 1;  // Elegim un número aleatori entre 1 i 10
+        int numeroAleatori = rnd.nextInt(10) + 1;  // Elegim un número aleatori entre 1 i 10
         boolean encertat = false; // Inicialitzem 'encertat' a false
         Jugador guanya = null; // Variable per guardar el guanyador
 
